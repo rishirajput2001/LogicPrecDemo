@@ -101,8 +101,7 @@
 		209448AD2DBFA96A00F9499B /* LogicPrecDemo */ = {
 			isa = PBXGroup;
 			children = (
-				209448AE2DBFA96A00F9499B /* AppDelegate.swift */,
-				209448B02DBFA96A00F9499B /* SceneDelegate.swift */,
+				209448E12DBFAA7500F9499B /* Application */,
 				209448B22DBFA96A00F9499B /* ViewController.swift */,
 				209448B42DBFA96A00F9499B /* Main.storyboard */,
 				209448BA2DBFA96D00F9499B /* Assets.xcassets */,
@@ -128,6 +127,15 @@
 				209448D42DBFA96E00F9499B /* LogicPrecDemoUITestsLaunchTests.swift */,
 			);
 			path = LogicPrecDemoUITests;
+			sourceTree = "<group>";
+		};
+		209448E12DBFAA7500F9499B /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				209448AE2DBFA96A00F9499B /* AppDelegate.swift */,
+				209448B02DBFA96A00F9499B /* SceneDelegate.swift */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
