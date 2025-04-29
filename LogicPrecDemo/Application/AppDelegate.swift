@@ -7,24 +7,53 @@
 
 import UIKit
 import CoreData
+import UserNotifications
 
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        Thread.sleep(forTimeInterval: 2)
+        // Request notification permission
+               let center = UNUserNotificationCenter.current()
+               center.delegate = self
+               center.requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+                   if granted {
+                       print("Notification permission granted")
+                   } else {
+                       print("Notification permission denied")
+                   }
+               }
+        
         return true
     }
 
+    // Show notification in foreground
+        func userNotificationCenter(
+            _ center: UNUserNotificationCenter,
+            willPresent notification: UNNotification,
+            withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void
+        ) {
+            if #available(iOS 14.0, *) {
+                completionHandler([.banner, .sound])
+            } else {
+                // Fallback on earlier versions
+            }
+        }
+
+        // Other required methods...
+        func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession,
+                         options: UIScene.ConnectionOptions) -> UISceneConfiguration {
+            return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+        }
+    
+    
     // MARK: UISceneSession Lifecycle
 
-    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
-        // Called when a new scene session is being created.
-        // Use this method to select a configuration to create the new scene with.
-        return UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
+
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
         // Called when the user discards a scene session.
