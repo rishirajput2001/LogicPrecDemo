@@ -24,9 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let homeVC = MainViewController()
         
         let navigationVC = UINavigationController(rootViewController: islogin ? homeVC : loginVc)
-        
-//        let navigationVC = UINavigationController(rootViewController: islogin ?   loginVc: homeVC)
-        
+                
         navigationVC.setNavigationBarHidden(true, animated: false)
         
         window?.rootViewController = navigationVC
